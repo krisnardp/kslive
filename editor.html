@@ -85,19 +85,9 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .tog input:checked+.slider{background:var(--blue)}
 .tog input:checked+.slider::before{transform:translateX(16px)}
 
-.cap-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:6px;
-  margin-top:4px;
-}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
 .cap-item{display:flex;flex-direction:column;align-items:center;gap:4px}
-.cap-card{
-  width:100%;height:52px;
-  border-radius:8px;border:2px solid var(--border);background:#0d1520;
-  cursor:pointer;transition:border-color .2s,transform .15s;
-  overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;
-}
+.cap-card{width:100%;height:52px;border-radius:8px;border:2px solid var(--border);background:#0d1520;cursor:pointer;transition:border-color .2s,transform .15s;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
 .cap-card:hover{border-color:var(--border-h);transform:scale(1.04)}
 .cap-card.active{border-color:var(--blue-b);box-shadow:0 0 0 1px var(--blue-b)}
 .cap-name{font-size:9px;font-weight:600;color:var(--text2);text-align:center;font-family:'Syne',sans-serif;letter-spacing:.02em}
@@ -108,48 +98,40 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .prev-default .word:nth-child(2){animation-delay:.1s}
 .prev-default .word:nth-child(3){animation-delay:.2s}
 @keyframes wrd-default{0%,60%,100%{opacity:1}70%{opacity:0}80%{opacity:1}}
-
 .prev-karaoke{background:#090909}
 .prev-karaoke .word{font-family:'DM Sans',sans-serif;font-weight:800;font-size:9px;color:#444;display:inline-block;transition:color .15s,text-shadow .15s}
 .prev-karaoke .word.lit{color:#FFD700;text-shadow:0 0 8px #FFD700}
-
 .prev-mozi{background:#000;flex-direction:column;gap:1px}
 .prev-mozi .word{font-family:'DM Sans',sans-serif;font-weight:900;font-size:8px;color:#fff;background:rgba(0,0,0,.9);padding:1px 3px;border-radius:2px;animation:mozi-pop 2.4s infinite}
 .prev-mozi .word:nth-child(2){animation-delay:.35s;color:#4ade80}
 .prev-mozi .word:nth-child(3){animation-delay:.7s}
 @keyframes mozi-pop{0%,100%{transform:scale(1)}10%{transform:scale(1.2)}20%{transform:scale(1)}}
-
 .prev-beasty{background:#0d0d0d}
 .prev-beasty .word{font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:10px;text-transform:uppercase;color:#fff;-webkit-text-stroke:.5px #000;display:inline-block;animation:beasty-in 2.4s infinite}
 .prev-beasty .word:nth-child(1){animation-delay:0s}
 .prev-beasty .word:nth-child(2){animation-delay:.08s}
 .prev-beasty .word:nth-child(3){animation-delay:.16s}
 @keyframes beasty-in{0%{transform:scale(.6) translateY(6px);opacity:0}12%{transform:scale(1.1) translateY(0);opacity:1}20%,80%{transform:scale(1);opacity:1}90%,100%{transform:scale(.9);opacity:0}}
-
 .prev-youshaei{background:#111}
 .prev-youshaei .word{font-family:'DM Sans',sans-serif;font-weight:700;font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#fff;display:inline-block;animation:you-fade 2.4s infinite}
 .prev-youshaei .word:nth-child(2){animation-delay:.2s;color:#a78bfa}
 .prev-youshaei .word:nth-child(3){animation-delay:.4s}
 @keyframes you-fade{0%{opacity:0;transform:translateY(4px)}15%,70%{opacity:1;transform:translateY(0)}85%,100%{opacity:0;transform:translateY(-4px)}}
-
 .prev-pod{background:#050505;flex-direction:column;gap:2px}
 .prev-pod .line{font-family:'DM Sans',sans-serif;font-weight:400;font-size:7px;color:#fff;background:rgba(0,0,0,.75);padding:1px 5px;border-radius:2px;text-align:center;animation:pod-slide 2.4s infinite}
 .prev-pod .line2{animation-delay:.6s;font-weight:700;color:#38bdf8}
 @keyframes pod-slide{0%{opacity:0;transform:translateY(4px)}20%,70%{opacity:1;transform:translateY(0)}90%,100%{opacity:0}}
-
 .prev-popline{background:#0a0a0a}
 .prev-popline .word{font-family:'DM Sans',sans-serif;font-weight:800;font-size:9px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--blue-b);display:inline-block;padding-bottom:1px;animation:pop-in 2.4s infinite}
 .prev-popline .word:nth-child(2){animation-delay:.15s;border-color:#f472b6}
 .prev-popline .word:nth-child(3){animation-delay:.3s;border-color:#4ade80}
 @keyframes pop-in{0%{transform:translateY(6px);opacity:0}15%,65%{transform:translateY(0);opacity:1}80%,100%{transform:translateY(-3px);opacity:0}}
-
 .prev-bounce{background:#0d0d0d}
 .prev-bounce .word{font-family:'DM Sans',sans-serif;font-weight:900;font-size:9px;text-transform:uppercase;color:#fff;display:inline-block;animation:bounce-w 2.4s infinite}
 .prev-bounce .word:nth-child(1){color:#facc15;animation-delay:0s}
 .prev-bounce .word:nth-child(2){animation-delay:.15s}
 .prev-bounce .word:nth-child(3){color:#facc15;animation-delay:.3s}
 @keyframes bounce-w{0%,100%{transform:translateY(0)}10%{transform:translateY(-5px)}20%{transform:translateY(0)}30%{transform:translateY(-3px)}40%{transform:translateY(0)}}
-
 .prev-blur{background:#0a0a0a}
 .prev-blur .word{font-family:'DM Sans',sans-serif;font-weight:700;font-size:9px;color:#fff;display:inline-block;animation:blur-sw 2.4s infinite}
 .prev-blur .word:nth-child(2){animation-delay:.3s}
@@ -174,9 +156,14 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .t-time{font-size:10px;color:var(--blue-b);flex-shrink:0;min-width:60px;font-family:'Syne',sans-serif}
 .t-text{font-size:11px;color:var(--text2);line-height:1.5}
 
-.btn-proc{height:46px;width:100%;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,box-shadow .2s;margin-bottom:10px}
+/* Buttons */
+.btn-row{display:flex;gap:8px;margin-bottom:10px}
+.btn-proc{height:46px;flex:1;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,box-shadow .2s}
 .btn-proc:hover:not(:disabled){background:var(--blue-b);box-shadow:0 8px 24px rgba(29,110,245,.4)}
 .btn-proc:disabled{opacity:.5;cursor:not-allowed}
+.btn-cancel{display:none;height:46px;width:46px;flex-shrink:0;background:rgba(239,68,68,.1);color:#fca5a5;border:1px solid rgba(239,68,68,.3);border-radius:10px;cursor:pointer;align-items:center;justify-content:center;transition:all .2s}
+.btn-cancel.show{display:flex}
+.btn-cancel:hover{background:rgba(239,68,68,.2)}
 .btn-dl{display:none;height:46px;width:100%;background:rgba(34,197,94,.15);color:#86efac;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:1px solid rgba(34,197,94,.3);border-radius:10px;cursor:pointer;align-items:center;justify-content:center;gap:8px;transition:all .2s;margin-bottom:10px}
 .btn-dl.show{display:flex}
 .btn-dl:hover{background:rgba(34,197,94,.25)}
@@ -185,6 +172,7 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .status-msg.show{display:block}
 .status-msg.error{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
 .status-msg.success{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#86efac}
+.status-msg.warning{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);color:#fcd34d}
 
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -243,7 +231,7 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
       <div class="sec-icon">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
       </div>
-      Clip Range
+      Clip Range <span style="font-size:10px;font-family:'DM Sans';font-weight:400;color:var(--muted);margin-left:4px">maks. 2 menit</span>
     </div>
     <div class="time-row">
       <div class="tg">
@@ -303,7 +291,6 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
       </div>
       <label class="tog"><input type="checkbox" id="togCaption" checked><span class="slider"></span></label>
     </div>
-    <!-- Auto Reframe — AKTIF -->
     <div class="tog-row">
       <div class="tog-info">
         <div class="tog-label">Auto Reframe <span class="badge-new">New</span></div>
@@ -343,89 +330,60 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
       Caption Style
     </div>
     <div class="cap-grid">
-
       <div class="cap-item">
         <div class="cap-card active" data-style="default" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-default">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-default"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Default</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="karaoke" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-karaoke">
-            <span class="word" id="k0">TO</span><span class="word" id="k1">GET</span><span class="word" id="k2">IT</span>
-          </div>
+          <div class="cap-preview prev-karaoke"><span class="word" id="k0">TO</span><span class="word" id="k1">GET</span><span class="word" id="k2">IT</span></div>
         </div>
         <div class="cap-name">Karaoke</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="mozi" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-mozi">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-mozi"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Mozi</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="beasty" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-beasty">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-beasty"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Beasty</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="youshaei" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-youshaei">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-youshaei"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Youshaei</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="pod" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-pod">
-            <span class="line">to get</span>
-            <span class="line line2">started</span>
-          </div>
+          <div class="cap-preview prev-pod"><span class="line">to get</span><span class="line line2">started</span></div>
         </div>
         <div class="cap-name">Pod P</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="popline" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-popline">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-popline"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Popline</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="bounce" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-bounce">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-bounce"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Bounce</div>
       </div>
-
       <div class="cap-item">
         <div class="cap-card" data-style="blur" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-blur">
-            <span class="word">TO</span><span class="word">GET</span><span class="word">IT</span>
-          </div>
+          <div class="cap-preview prev-blur"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
         </div>
         <div class="cap-name">Blur</div>
       </div>
-
     </div>
   </div>
 
@@ -442,10 +400,15 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
     Download Clip
   </button>
 
-  <button class="btn-proc" id="btnProc" onclick="startProcess()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    Proses Video
-  </button>
+  <div class="btn-row">
+    <button class="btn-proc" id="btnProc" onclick="startProcess()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Proses Video
+    </button>
+    <button class="btn-cancel" id="btnCancel" onclick="cancelProcess()" title="Batalkan proses">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
 
   <div class="transcript-wrap" id="transcriptWrap">
     <div class="t-title">Transcript — klik untuk set waktu</div>
@@ -455,6 +418,7 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 
 <script>
 const API = 'https://api.kslive.online';
+const MAX_CLIP_SEC = 120; // 2 menit
 let currentJobId = null;
 let pollInterval = null;
 let selectedAR = '9:16';
@@ -476,17 +440,12 @@ function handleTimeInput(input) {
   let digits = input.value.replace(/[^0-9]/g, '');
   if (digits.length > 6) digits = digits.slice(0, 6);
   let formatted = '';
-  if (digits.length <= 2) {
-    formatted = digits;
-  } else if (digits.length <= 4) {
-    formatted = digits.slice(0,2) + ':' + digits.slice(2);
-  } else {
-    formatted = digits.slice(0,2) + ':' + digits.slice(2,4) + ':' + digits.slice(4);
-  }
+  if (digits.length <= 2) formatted = digits;
+  else if (digits.length <= 4) formatted = digits.slice(0,2) + ':' + digits.slice(2);
+  else formatted = digits.slice(0,2) + ':' + digits.slice(2,4) + ':' + digits.slice(4);
   input.value = formatted;
   input.classList.remove('error');
 }
-
 function normalizeTime(input) {
   const parts = input.value.split(':');
   let hh = parseInt(parts[0]) || 0;
@@ -496,23 +455,14 @@ function normalizeTime(input) {
   if (mm >= 60) { hh += Math.floor(mm/60); mm = mm % 60; }
   input.value = pad(hh) + ':' + pad(mm) + ':' + pad(ss);
 }
-
 function pad(n) { return String(n).padStart(2,'0'); }
-
 function timeToSeconds(hhmmss) {
   const parts = hhmmss.split(':');
-  const hh = parseInt(parts[0]) || 0;
-  const mm = parseInt(parts[1]) || 0;
-  const ss = parseInt(parts[2]) || 0;
-  return hh * 3600 + mm * 60 + ss;
+  return (parseInt(parts[0])||0)*3600 + (parseInt(parts[1])||0)*60 + (parseInt(parts[2])||0);
 }
-
 function secondsToHHMMSS(sec) {
   sec = Math.max(0, Math.floor(sec));
-  const hh = Math.floor(sec / 3600);
-  const mm = Math.floor((sec % 3600) / 60);
-  const ss = sec % 60;
-  return pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+  return pad(Math.floor(sec/3600)) + ':' + pad(Math.floor((sec%3600)/60)) + ':' + pad(sec%60);
 }
 
 // ── Init ──
@@ -526,7 +476,7 @@ window.onload = () => {
   document.getElementById('edDur').textContent   = duration ? `Durasi: ${secondsToHHMMSS(parseInt(duration))} (${duration}s)` : '—';
   document.getElementById('edThumb').src         = thumb;
   if (duration) {
-    document.getElementById('endTime').value = secondsToHHMMSS(Math.min(60, parseInt(duration)));
+    document.getElementById('endTime').value = secondsToHHMMSS(Math.min(MAX_CLIP_SEC, parseInt(duration)));
   }
   window._videoUrl = url;
   document.getElementById('expiryWarn').classList.add('show');
@@ -548,12 +498,26 @@ function checkDev(cb) {
 function showDevModal() { document.getElementById('devModal').classList.add('show'); }
 function closeDevModal() { document.getElementById('devModal').classList.remove('show'); }
 function closeModalBg(e) { if (e.target === document.getElementById('devModal')) closeDevModal(); }
+
 function showStatus(msg, type) {
   const el = document.getElementById('statusMsg');
   el.className = `status-msg show ${type}`;
   el.textContent = msg;
 }
 function hideStatus() { document.getElementById('statusMsg').className = 'status-msg'; }
+
+function setProcessing(active) {
+  document.getElementById('btnProc').disabled = active;
+  document.getElementById('btnCancel').classList.toggle('show', active);
+  if (active) {
+    document.getElementById('progWrap').classList.add('show');
+    document.getElementById('btnDl').classList.remove('show');
+    document.getElementById('transcriptWrap').classList.remove('show');
+  } else {
+    document.getElementById('progWrap').classList.remove('show');
+    document.getElementById('btnCancel').classList.remove('show');
+  }
+}
 
 async function startProcess() {
   const url = window._videoUrl;
@@ -571,22 +535,21 @@ async function startProcess() {
     endEl.classList.add('error');
     return showStatus('Waktu End harus lebih besar dari Start!', 'error');
   }
-
-  const doReframe = document.getElementById('togReframe').checked;
+  if (end - start > MAX_CLIP_SEC) {
+    endEl.classList.add('error');
+    return showStatus(`Maksimal durasi clip ${MAX_CLIP_SEC} detik (2 menit). Sekarang: ${end - start} detik.`, 'error');
+  }
 
   const payload = {
     url, start, end,
     captions: document.getElementById('togCaption').checked,
-    reframe:  doReframe,
+    reframe:  document.getElementById('togReframe').checked,
     aspect: selectedAR,
     caption_style: selectedCapStyle,
     language: 'auto',
   };
 
-  document.getElementById('btnProc').disabled = true;
-  document.getElementById('btnDl').classList.remove('show');
-  document.getElementById('progWrap').classList.add('show');
-  document.getElementById('transcriptWrap').classList.remove('show');
+  setProcessing(true);
   hideStatus();
 
   try {
@@ -598,9 +561,19 @@ async function startProcess() {
     pollInterval = setInterval(pollStatus, 2000);
   } catch(e) {
     showStatus(`Error: ${e.message}`, 'error');
-    document.getElementById('btnProc').disabled = false;
-    document.getElementById('progWrap').classList.remove('show');
+    setProcessing(false);
   }
+}
+
+async function cancelProcess() {
+  if (!currentJobId) return;
+  try {
+    await fetch(`${API}/api/cancel/${currentJobId}`, { method: 'POST' });
+  } catch(e) {}
+  clearInterval(pollInterval);
+  setProcessing(false);
+  showStatus('Proses dibatalkan.', 'warning');
+  currentJobId = null;
 }
 
 async function pollStatus() {
@@ -612,10 +585,10 @@ async function pollStatus() {
     document.getElementById('progFill').style.width = pct + '%';
     document.getElementById('progPct').textContent  = pct + '%';
     document.getElementById('progText').textContent = data.step || 'Processing...';
+
     if (data.status === 'done') {
       clearInterval(pollInterval);
-      document.getElementById('progWrap').classList.remove('show');
-      document.getElementById('btnProc').disabled = false;
+      setProcessing(false);
       document.getElementById('btnDl').classList.add('show');
       showStatus('Selesai! File akan dihapus otomatis dalam 1 jam.', 'success');
       startExpiryCountdown(data.expires_in || 3600);
@@ -638,9 +611,13 @@ async function pollStatus() {
     }
     if (data.status === 'error') {
       clearInterval(pollInterval);
-      document.getElementById('progWrap').classList.remove('show');
-      document.getElementById('btnProc').disabled = false;
+      setProcessing(false);
       showStatus(`Error: ${data.error}`, 'error');
+    }
+    if (data.status === 'cancelled') {
+      clearInterval(pollInterval);
+      setProcessing(false);
+      showStatus('Proses dibatalkan.', 'warning');
     }
   } catch(e) {}
 }
