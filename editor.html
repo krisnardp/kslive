@@ -49,17 +49,7 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .time-row{display:flex;gap:6px;margin-bottom:8px;align-items:flex-end}
 .tg{flex:1;display:flex;flex-direction:column;gap:4px}
 .tg label{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
-.tg input{
-  height:40px;padding:0 6px;
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--border-h);
-  border-radius:8px;
-  color:var(--text);
-  font-family:'Syne',sans-serif;
-  font-size:13px;font-weight:600;
-  outline:none;width:100%;text-align:center;
-  letter-spacing:.04em;
-}
+.tg input{height:40px;padding:0 6px;background:rgba(255,255,255,.04);border:1px solid var(--border-h);border-radius:8px;color:var(--text);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;outline:none;width:100%;text-align:center;letter-spacing:.04em}
 .tg input:focus{border-color:var(--blue-b);background:rgba(61,140,255,.06)}
 .tg input.error{border-color:var(--red)}
 .time-sep{color:var(--muted);font-size:16px;font-weight:300;padding-bottom:9px;flex-shrink:0}
@@ -85,59 +75,139 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .tog input:checked+.slider{background:var(--blue)}
 .tog input:checked+.slider::before{transform:translateX(16px)}
 
-.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
-.cap-item{display:flex;flex-direction:column;align-items:center;gap:4px}
-.cap-card{width:100%;height:52px;border-radius:8px;border:2px solid var(--border);background:#0d1520;cursor:pointer;transition:border-color .2s,transform .15s;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+/* ═══════════════════════════════════════════════
+   CAPTION STYLE GRID
+═══════════════════════════════════════════════ */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.cap-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.cap-card{
+  width:100%;height:64px;
+  border-radius:10px;
+  border:2px solid var(--border);
+  background:#080e18;
+  cursor:pointer;
+  transition:border-color .2s,transform .15s,box-shadow .2s;
+  overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+  position:relative;
+  padding-bottom:8px;
+}
 .cap-card:hover{border-color:var(--border-h);transform:scale(1.04)}
-.cap-card.active{border-color:var(--blue-b);box-shadow:0 0 0 1px var(--blue-b)}
-.cap-name{font-size:9px;font-weight:600;color:var(--text2);text-align:center;font-family:'Syne',sans-serif;letter-spacing:.02em}
-.cap-preview{display:flex;align-items:center;justify-content:center;gap:2px;padding:4px;width:100%;height:100%;overflow:hidden;position:relative}
+.cap-card.active{border-color:var(--blue-b);box-shadow:0 0 0 1px var(--blue-b),0 0 12px rgba(61,140,255,.25)}
+.cap-name{font-size:9px;font-weight:600;color:var(--text2);text-align:center;font-family:'Syne',sans-serif;letter-spacing:.03em}
 
-.prev-default{background:#0d1520}
-.prev-default .word{font-family:'DM Sans',sans-serif;font-weight:700;font-size:9px;color:#fff;text-shadow:1px 1px 0 #000,-1px -1px 0 #000;display:inline-block;animation:wrd-default 2.4s infinite}
-.prev-default .word:nth-child(2){animation-delay:.1s}
-.prev-default .word:nth-child(3){animation-delay:.2s}
-@keyframes wrd-default{0%,60%,100%{opacity:1}70%{opacity:0}80%{opacity:1}}
-.prev-karaoke{background:#090909}
-.prev-karaoke .word{font-family:'DM Sans',sans-serif;font-weight:800;font-size:9px;color:#444;display:inline-block;transition:color .15s,text-shadow .15s}
-.prev-karaoke .word.lit{color:#FFD700;text-shadow:0 0 8px #FFD700}
-.prev-mozi{background:#000;flex-direction:column;gap:1px}
-.prev-mozi .word{font-family:'DM Sans',sans-serif;font-weight:900;font-size:8px;color:#fff;background:rgba(0,0,0,.9);padding:1px 3px;border-radius:2px;animation:mozi-pop 2.4s infinite}
-.prev-mozi .word:nth-child(2){animation-delay:.35s;color:#4ade80}
-.prev-mozi .word:nth-child(3){animation-delay:.7s}
-@keyframes mozi-pop{0%,100%{transform:scale(1)}10%{transform:scale(1.2)}20%{transform:scale(1)}}
-.prev-beasty{background:#0d0d0d}
-.prev-beasty .word{font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:10px;text-transform:uppercase;color:#fff;-webkit-text-stroke:.5px #000;display:inline-block;animation:beasty-in 2.4s infinite}
+/* ── SHARED word base ── */
+.cap-preview{display:flex;align-items:center;justify-content:center;gap:3px;padding:0 6px;flex-wrap:wrap}
+
+/* 1. DEFAULT — putih bold outline hitam */
+.prev-default .word{
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:10px;
+  color:#fff;
+  text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,0 2px 0 #000;
+  animation:wd-fade 2.4s infinite;
+}
+.prev-default .word:nth-child(2){animation-delay:.08s}
+.prev-default .word:nth-child(3){animation-delay:.16s}
+@keyframes wd-fade{0%,10%{opacity:0;transform:translateY(3px)}20%,75%{opacity:1;transform:none}90%,100%{opacity:0}}
+
+/* 2. HORMOZI — block bg kuning, teks hitam */
+.prev-hormozi .word{
+  font-family:'DM Sans',sans-serif;font-weight:900;font-size:11px;
+  color:#000;background:#F5C518;
+  padding:1px 5px;border-radius:3px;
+  text-transform:uppercase;
+  animation:hormozi-pop 2.4s infinite;
+}
+.prev-hormozi .word:nth-child(1){animation-delay:0s}
+.prev-hormozi .word:nth-child(2){animation-delay:.35s}
+.prev-hormozi .word:nth-child(3){animation-delay:.7s}
+@keyframes hormozi-pop{0%,5%{opacity:0;transform:scale(.7)}15%,55%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(.9)}}
+
+/* 3. KARAOKE — satu kata highlight kuning, sisanya redup */
+.prev-karaoke .word{
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:10px;
+  color:rgba(255,255,255,.3);
+  transition:color .15s,text-shadow .15s;
+}
+.prev-karaoke .word.lit{color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,.8)}
+
+/* 4. BEASTY — Impact uppercase, shadow besar */
+.prev-beasty .word{
+  font-family:'Impact',sans-serif;font-weight:900;font-size:12px;
+  text-transform:uppercase;color:#fff;
+  -webkit-text-stroke:.5px #000;
+  text-shadow:2px 2px 4px #000;
+  animation:beasty-in 2.4s infinite;
+}
 .prev-beasty .word:nth-child(1){animation-delay:0s}
-.prev-beasty .word:nth-child(2){animation-delay:.08s}
-.prev-beasty .word:nth-child(3){animation-delay:.16s}
-@keyframes beasty-in{0%{transform:scale(.6) translateY(6px);opacity:0}12%{transform:scale(1.1) translateY(0);opacity:1}20%,80%{transform:scale(1);opacity:1}90%,100%{transform:scale(.9);opacity:0}}
-.prev-youshaei{background:#111}
-.prev-youshaei .word{font-family:'DM Sans',sans-serif;font-weight:700;font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#fff;display:inline-block;animation:you-fade 2.4s infinite}
-.prev-youshaei .word:nth-child(2){animation-delay:.2s;color:#a78bfa}
-.prev-youshaei .word:nth-child(3){animation-delay:.4s}
-@keyframes you-fade{0%{opacity:0;transform:translateY(4px)}15%,70%{opacity:1;transform:translateY(0)}85%,100%{opacity:0;transform:translateY(-4px)}}
-.prev-pod{background:#050505;flex-direction:column;gap:2px}
-.prev-pod .line{font-family:'DM Sans',sans-serif;font-weight:400;font-size:7px;color:#fff;background:rgba(0,0,0,.75);padding:1px 5px;border-radius:2px;text-align:center;animation:pod-slide 2.4s infinite}
-.prev-pod .line2{animation-delay:.6s;font-weight:700;color:#38bdf8}
-@keyframes pod-slide{0%{opacity:0;transform:translateY(4px)}20%,70%{opacity:1;transform:translateY(0)}90%,100%{opacity:0}}
-.prev-popline{background:#0a0a0a}
-.prev-popline .word{font-family:'DM Sans',sans-serif;font-weight:800;font-size:9px;text-transform:uppercase;color:#fff;border-bottom:2px solid var(--blue-b);display:inline-block;padding-bottom:1px;animation:pop-in 2.4s infinite}
-.prev-popline .word:nth-child(2){animation-delay:.15s;border-color:#f472b6}
-.prev-popline .word:nth-child(3){animation-delay:.3s;border-color:#4ade80}
-@keyframes pop-in{0%{transform:translateY(6px);opacity:0}15%,65%{transform:translateY(0);opacity:1}80%,100%{transform:translateY(-3px);opacity:0}}
-.prev-bounce{background:#0d0d0d}
-.prev-bounce .word{font-family:'DM Sans',sans-serif;font-weight:900;font-size:9px;text-transform:uppercase;color:#fff;display:inline-block;animation:bounce-w 2.4s infinite}
-.prev-bounce .word:nth-child(1){color:#facc15;animation-delay:0s}
-.prev-bounce .word:nth-child(2){animation-delay:.15s}
-.prev-bounce .word:nth-child(3){color:#facc15;animation-delay:.3s}
-@keyframes bounce-w{0%,100%{transform:translateY(0)}10%{transform:translateY(-5px)}20%{transform:translateY(0)}30%{transform:translateY(-3px)}40%{transform:translateY(0)}}
-.prev-blur{background:#0a0a0a}
-.prev-blur .word{font-family:'DM Sans',sans-serif;font-weight:700;font-size:9px;color:#fff;display:inline-block;animation:blur-sw 2.4s infinite}
-.prev-blur .word:nth-child(2){animation-delay:.3s}
-.prev-blur .word:nth-child(3){animation-delay:.6s}
-@keyframes blur-sw{0%{filter:blur(6px);opacity:0}20%,60%{filter:blur(0);opacity:1}80%,100%{filter:blur(6px);opacity:0}}
+.prev-beasty .word:nth-child(2){animation-delay:.1s}
+.prev-beasty .word:nth-child(3){animation-delay:.2s}
+@keyframes beasty-in{0%{transform:scale(.5) translateY(8px);opacity:0}15%{transform:scale(1.1);opacity:1}25%,75%{transform:scale(1);opacity:1}90%,100%{transform:scale(.9);opacity:0}}
 
+/* 5. TWOCOLOR — kata aktif cyan, sisanya putih */
+.prev-twocolor .word{
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:10px;
+  color:#fff;
+}
+.prev-twocolor .word.active-tw{color:#00E5FF;text-shadow:0 0 8px rgba(0,229,255,.6)}
+
+/* 6. SUBTITLE CLEAN — 2 baris, semi-transparent bg, font tipis */
+.prev-subtitle .lines{
+  background:rgba(0,0,0,.75);
+  border-radius:4px;
+  padding:3px 8px;
+  text-align:center;
+}
+.prev-subtitle .line1{
+  font-family:'DM Sans',sans-serif;font-weight:400;font-size:8px;
+  color:#fff;opacity:.7;display:block;margin-bottom:1px;
+  animation:sub-fade 2.4s infinite;
+}
+.prev-subtitle .line2{
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:9px;
+  color:#fff;display:block;
+  animation:sub-fade 2.4s .4s infinite;
+}
+@keyframes sub-fade{0%{opacity:0}15%,75%{opacity:1}90%,100%{opacity:0}}
+
+/* 7. ALL CAPS IMPACT */
+.prev-allcaps .word{
+  font-family:'Impact',sans-serif;font-weight:900;font-size:13px;
+  text-transform:uppercase;color:#fff;
+  text-shadow:0 3px 8px #000,0 0 0 #000;
+  -webkit-text-stroke:.8px #000;
+  animation:allcaps-slam 2.4s infinite;
+}
+.prev-allcaps .word:nth-child(2){animation-delay:.12s}
+.prev-allcaps .word:nth-child(3){animation-delay:.24s}
+@keyframes allcaps-slam{0%{transform:scaleY(1.4) translateY(-4px);opacity:0}12%{transform:scaleY(1);opacity:1}20%,75%{opacity:1}88%,100%{opacity:0}}
+
+/* 8. UNDERLINE REVEAL — teks putih, garis bawah emas menyapu */
+.prev-underline .word{
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:10px;
+  color:#fff;
+  border-bottom:2px solid transparent;
+  padding-bottom:1px;
+  animation:underline-reveal 2.4s infinite;
+}
+.prev-underline .word:nth-child(1){animation-delay:0s;border-color:#FFD700}
+.prev-underline .word:nth-child(2){animation-delay:.2s;border-color:#FF6B6B}
+.prev-underline .word:nth-child(3){animation-delay:.4s;border-color:#4ECDC4}
+@keyframes underline-reveal{0%{opacity:0;transform:translateY(4px)}15%,70%{opacity:1;transform:none}85%,100%{opacity:0}}
+
+/* 9. FACELESS — lowercase, italic, minimal */
+.prev-faceless .word{
+  font-family:'DM Sans',sans-serif;font-weight:300;font-size:9px;
+  font-style:italic;
+  color:rgba(255,255,255,.85);
+  letter-spacing:.04em;
+  animation:faceless-drift 2.4s infinite;
+}
+.prev-faceless .word:nth-child(2){animation-delay:.25s;color:rgba(255,255,255,.6)}
+.prev-faceless .word:nth-child(3){animation-delay:.5s}
+@keyframes faceless-drift{0%{opacity:0;transform:translateX(-4px)}20%,65%{opacity:1;transform:none}80%,100%{opacity:0;transform:translateX(4px)}}
+
+/* progress, transcript, buttons — sama seperti sebelumnya */
 .prog-wrap{display:none;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
 .prog-wrap.show{display:block}
 .prog-step{font-size:12px;color:var(--blue-b);margin-bottom:8px;display:flex;align-items:center;gap:7px}
@@ -156,7 +226,6 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .t-time{font-size:10px;color:var(--blue-b);flex-shrink:0;min-width:60px;font-family:'Syne',sans-serif}
 .t-text{font-size:11px;color:var(--text2);line-height:1.5}
 
-/* Buttons */
 .btn-row{display:flex;gap:8px;margin-bottom:10px}
 .btn-proc{height:46px;flex:1;background:var(--blue);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,box-shadow .2s}
 .btn-proc:hover:not(:disabled){background:var(--blue-b);box-shadow:0 8px 24px rgba(29,110,245,.4)}
@@ -186,6 +255,9 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 .modal-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:16px}
 .modal-close{height:38px;width:100%;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer}
 .modal-close:hover{background:var(--blue-b)}
+
+/* badge word-level */
+.badge-word{font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(99,102,241,.2);color:#a5b4fc;border:1px solid rgba(99,102,241,.3);border-radius:4px;padding:1px 5px}
 </style>
 </head>
 <body>
@@ -289,7 +361,7 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
         <div class="tog-label">Auto Captions</div>
         <div class="tog-desc">Subtitle otomatis dari audio (Whisper)</div>
       </div>
-      <label class="tog"><input type="checkbox" id="togCaption" checked><span class="slider"></span></label>
+      <label class="tog"><input type="checkbox" id="togCaption" checked onchange="toggleCaptionStyle()"><span class="slider"></span></label>
     </div>
     <div class="tog-row">
       <div class="tog-info">
@@ -330,60 +402,104 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
       Caption Style
     </div>
     <div class="cap-grid">
+
+      <!-- 1. Default -->
       <div class="cap-item">
         <div class="cap-card active" data-style="default" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-default"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+          <div class="cap-preview prev-default">
+            <span class="word">THE</span><span class="word">BEST</span><span class="word">WAY</span>
+          </div>
         </div>
         <div class="cap-name">Default</div>
       </div>
+
+      <!-- 2. Hormozi -->
+      <div class="cap-item">
+        <div class="cap-card" data-style="hormozi" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-hormozi">
+            <span class="word">YOU</span><span class="word">NEED</span><span class="word">THIS</span>
+          </div>
+        </div>
+        <div class="cap-name">Hormozi <span class="badge-word" style="font-size:7px">Word</span></div>
+      </div>
+
+      <!-- 3. Karaoke -->
       <div class="cap-item">
         <div class="cap-card" data-style="karaoke" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-karaoke"><span class="word" id="k0">TO</span><span class="word" id="k1">GET</span><span class="word" id="k2">IT</span></div>
+          <div class="cap-preview prev-karaoke">
+            <span class="word" id="k0">THE</span>
+            <span class="word" id="k1">RIGHT</span>
+            <span class="word" id="k2">WAY</span>
+          </div>
         </div>
-        <div class="cap-name">Karaoke</div>
+        <div class="cap-name">Karaoke <span class="badge-word" style="font-size:7px">Word</span></div>
       </div>
-      <div class="cap-item">
-        <div class="cap-card" data-style="mozi" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-mozi"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
-        </div>
-        <div class="cap-name">Mozi</div>
-      </div>
+
+      <!-- 4. Beasty -->
       <div class="cap-item">
         <div class="cap-card" data-style="beasty" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-beasty"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+          <div class="cap-preview prev-beasty">
+            <span class="word">DO</span><span class="word">IT</span><span class="word">NOW</span>
+          </div>
         </div>
         <div class="cap-name">Beasty</div>
       </div>
+
+      <!-- 5. TwoColor -->
       <div class="cap-item">
-        <div class="cap-card" data-style="youshaei" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-youshaei"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+        <div class="cap-card" data-style="twocolor" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-twocolor">
+            <span class="word" id="tc0">JUST</span>
+            <span class="word active-tw" id="tc1">DO</span>
+            <span class="word" id="tc2">IT</span>
+          </div>
         </div>
-        <div class="cap-name">Youshaei</div>
+        <div class="cap-name">TwoColor <span class="badge-word" style="font-size:7px">Word</span></div>
       </div>
+
+      <!-- 6. Subtitle Clean -->
       <div class="cap-item">
-        <div class="cap-card" data-style="pod" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-pod"><span class="line">to get</span><span class="line line2">started</span></div>
+        <div class="cap-card" data-style="subtitle_clean" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-subtitle">
+            <div class="lines">
+              <span class="line1">this is the first line</span>
+              <span class="line2">and the second one</span>
+            </div>
+          </div>
         </div>
-        <div class="cap-name">Pod P</div>
+        <div class="cap-name">Sub Clean</div>
       </div>
+
+      <!-- 7. All Caps Impact -->
       <div class="cap-item">
-        <div class="cap-card" data-style="popline" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-popline"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+        <div class="cap-card" data-style="all_caps_impact" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-allcaps">
+            <span class="word">STOP</span><span class="word">RIGHT</span><span class="word">NOW</span>
+          </div>
         </div>
-        <div class="cap-name">Popline</div>
+        <div class="cap-name">All Caps</div>
       </div>
+
+      <!-- 8. Underline Reveal -->
       <div class="cap-item">
-        <div class="cap-card" data-style="bounce" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-bounce"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+        <div class="cap-card" data-style="underline_reveal" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-underline">
+            <span class="word">WAIT</span><span class="word">FOR</span><span class="word">IT</span>
+          </div>
         </div>
-        <div class="cap-name">Bounce</div>
+        <div class="cap-name">Underline</div>
       </div>
+
+      <!-- 9. Faceless -->
       <div class="cap-item">
-        <div class="cap-card" data-style="blur" onclick="setCapStyle(this)">
-          <div class="cap-preview prev-blur"><span class="word">TO</span><span class="word">GET</span><span class="word">IT</span></div>
+        <div class="cap-card" data-style="faceless" onclick="setCapStyle(this)">
+          <div class="cap-preview prev-faceless">
+            <span class="word">quiet</span><span class="word">luxury</span><span class="word">vibes</span>
+          </div>
         </div>
-        <div class="cap-name">Blur</div>
+        <div class="cap-name">Faceless</div>
       </div>
+
     </div>
   </div>
 
@@ -418,14 +534,14 @@ main{position:relative;z-index:1;padding:68px 16px 40px;max-width:480px;margin:0
 
 <script>
 const API = 'https://api.kslive.online';
-const MAX_CLIP_SEC = 120; // 2 menit
+const MAX_CLIP_SEC = 120;
 let currentJobId = null;
 let pollInterval = null;
 let selectedAR = '9:16';
 let selectedCapStyle = 'default';
 let expiryInterval = null;
 
-// ── Karaoke ──
+// ── Karaoke preview animation ──
 const karWords = [document.getElementById('k0'), document.getElementById('k1'), document.getElementById('k2')];
 let karIdx = 0;
 function karStep() {
@@ -433,7 +549,17 @@ function karStep() {
   if (karWords[karIdx]) karWords[karIdx].classList.add('lit');
   karIdx = (karIdx + 1) % karWords.length;
 }
-setInterval(karStep, 400); karStep();
+setInterval(karStep, 500); karStep();
+
+// ── TwoColor preview animation ──
+const tcWords = [document.getElementById('tc0'), document.getElementById('tc1'), document.getElementById('tc2')];
+let tcIdx = 0;
+function tcStep() {
+  tcWords.forEach(w => w && w.classList.remove('active-tw'));
+  if (tcWords[tcIdx]) tcWords[tcIdx].classList.add('active-tw');
+  tcIdx = (tcIdx + 1) % tcWords.length;
+}
+setInterval(tcStep, 600); tcStep();
 
 // ── Time helpers ──
 function handleTimeInput(input) {
@@ -487,11 +613,19 @@ function setAR(el) {
   el.classList.add('active');
   selectedAR = el.dataset.ar;
 }
+
 function setCapStyle(el) {
   document.querySelectorAll('.cap-card').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   selectedCapStyle = el.dataset.style;
 }
+
+function toggleCaptionStyle() {
+  const show = document.getElementById('togCaption').checked;
+  document.getElementById('captionStyleSec').style.opacity = show ? '1' : '0.4';
+  document.getElementById('captionStyleSec').style.pointerEvents = show ? 'auto' : 'none';
+}
+
 function checkDev(cb) {
   if (cb.checked) { cb.checked = false; showDevModal(); }
 }
@@ -531,8 +665,7 @@ async function startProcess() {
   const end   = timeToSeconds(endEl.value);
 
   if (end <= start) {
-    startEl.classList.add('error');
-    endEl.classList.add('error');
+    startEl.classList.add('error'); endEl.classList.add('error');
     return showStatus('Waktu End harus lebih besar dari Start!', 'error');
   }
   if (end - start > MAX_CLIP_SEC) {
@@ -544,7 +677,7 @@ async function startProcess() {
     url, start, end,
     captions: document.getElementById('togCaption').checked,
     reframe:  document.getElementById('togReframe').checked,
-    aspect: selectedAR,
+    aspect:   selectedAR,
     caption_style: selectedCapStyle,
     language: 'auto',
   };
@@ -567,9 +700,7 @@ async function startProcess() {
 
 async function cancelProcess() {
   if (!currentJobId) return;
-  try {
-    await fetch(`${API}/api/cancel/${currentJobId}`, { method: 'POST' });
-  } catch(e) {}
+  try { await fetch(`${API}/api/cancel/${currentJobId}`, { method: 'POST' }); } catch(e) {}
   clearInterval(pollInterval);
   setProcessing(false);
   showStatus('Proses dibatalkan.', 'warning');
